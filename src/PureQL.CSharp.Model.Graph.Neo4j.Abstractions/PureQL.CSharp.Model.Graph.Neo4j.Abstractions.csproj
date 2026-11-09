@@ -18,7 +18,7 @@
     <PackageProjectUrl>https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Neo4j.Driver" Version="5.28.4" />
+    <PackageReference Include="Neo4j.Driver" Version="6.5.1" />
     <PackageReference Include="PureQL.CSharp.Model" Version="0.1.0-preview.14.0.0" />
   </ItemGroup>
   <ItemGroup>
