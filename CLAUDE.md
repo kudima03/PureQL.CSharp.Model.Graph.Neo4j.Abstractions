@@ -24,7 +24,7 @@ This is the **Neo4j abstractions package** of the `PureQL.CSharp.Model.Graph` fa
 
 - `INeo4jStoredQueries` — `IDriver Driver` and `string Database`: the Neo4j database holding the query graphs.
 - `Neo4jStoredQueries` — `sealed record (IDriver Driver, string Database) : INeo4jStoredQueries`; the `(IDriver driver)` overload uses the constant `DefaultDatabase` (`"neo4j"`, the only user database on Community edition). It does not own the driver.
-- `StoredQuery` — `sealed record (Guid Id, Guid VisualizationId, PureQLQuery Query)`: a query as stored.
+- `StoredQuery` — `sealed record (Guid Id, PureQLQuery Query)`: a query as stored, its id and the query.
 
 The operation packages run their statements on an `IAsyncQueryRunner` (an `IAsyncSession` or an `IAsyncTransaction`), so operations compose inside one transaction, and offer convenience records over `INeo4jStoredQueries` that open the session on `Driver` against `Database`. The public API is the contract those packages are written against: do not rename or reshape it, and add to it only what they all need. Every public member has XML documentation (`GenerateDocumentationFile`; a missing comment fails the build under `-warnaserror`).
 
