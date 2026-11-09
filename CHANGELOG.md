@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-preview.1.0.0] - 2026-11-09
+
+A stored query no longer knows the visualization it is shown in:
+visualizations hold the query id instead.
+
+### Changed
+
+- **Breaking:** **`StoredQuery`** is now `sealed record StoredQuery(Guid Id,
+  PureQLQuery Query)`. The `VisualizationId` property is removed, along with
+  the three-argument constructor and `Deconstruct`.
+
 ## [0.1.0-preview.0.1.0] - 2026-11-09
 
 First release: the Neo4j stored-queries contract shared by the Neo4j operation
