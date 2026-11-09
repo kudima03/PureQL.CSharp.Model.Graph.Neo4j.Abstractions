@@ -1,0 +1,9 @@
+<Solution>
+    <Folder Name="/Solution Items/">
+        <File Path=".editorconfig" />
+    </Folder>
+    <Folder Name="/Tests/">
+        <Project Path="Tests/PureQL.CSharp.Model.Graph.Neo4j.Abstractions.Tests/PureQL.CSharp.Model.Graph.Neo4j.Abstractions.Tests.csproj" />
+    </Folder>
+    <Project Path="PureQL.CSharp.Model.Graph.Neo4j.Abstractions/PureQL.CSharp.Model.Graph.Neo4j.Abstractions.csproj" />
+</Solution>

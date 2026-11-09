@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</PackageId>
+    <RootNamespace>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</RootNamespace>
+    <AssemblyName>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</AssemblyName>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Neo4j.Driver" Version="5.28.4" />
+    <PackageReference Include="PureQL.CSharp.Model" Version="0.1.0-preview.14.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>
