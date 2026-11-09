@@ -19,7 +19,7 @@ Namespace `PureQL.CSharp.Model.Graph.Neo4j.Abstractions`:
 |------|-------------|
 | `INeo4jStoredQueries` | A Neo4j database holding PureQL query graphs: the `IDriver Driver` connected to the server and the `string Database` name |
 | `Neo4jStoredQueries` | `sealed record Neo4jStoredQueries(IDriver Driver, string Database)`, the implementation; `new Neo4jStoredQueries(driver)` uses `Neo4jStoredQueries.DefaultDatabase`, `"neo4j"`, the only user database on Community edition |
-| `StoredQuery` | `sealed record StoredQuery(Guid Id, Guid VisualizationId, PureQLQuery Query)`: a query as stored, with its id and the id of the visualization it belongs to |
+| `StoredQuery` | `sealed record StoredQuery(Guid Id, PureQLQuery Query)`: a query as stored, with its id |
 
 `Neo4jStoredQueries` does not own its driver: whoever creates the `IDriver` disposes it.
 
@@ -39,25 +39,26 @@ await using IDriver driver = GraphDatabase.Driver(
 INeo4jStoredQueries store = new Neo4jStoredQueries(driver);
 
 PureQLQuery query = /* any PureQL query */;
-StoredQuery stored = new StoredQuery(Guid.NewGuid(), visualizationId, query);
+StoredQuery stored = new StoredQuery(Guid.NewGuid(), query);
 
 // One package's convenience record opens the session itself:
 await new InsertedQueryOf(store, stored).ApplyAsync();
 
-// Or compose several operations in one transaction:
+// Or compose several operations in one transaction, here to swap it for another:
+StoredQuery replacement = new StoredQuery(Guid.NewGuid(), /* another query */);
 await using IAsyncSession session = driver.AsyncSession(
     builder => builder.WithDatabase(store.Database)
 );
 await session.ExecuteWriteAsync(
     async transaction =>
     {
-        await new DeletedQueriesOfVisualization(transaction, visualizationId).ApplyAsync();
-        await new InsertedQuery(transaction, stored).ApplyAsync();
+        await new DeletedQuery(transaction, stored.Id).ApplyAsync();
+        await new InsertedQuery(transaction, replacement).ApplyAsync();
     }
 );
 ```
 
-`InsertedQueryOf`, `InsertedQuery` and `DeletedQueriesOfVisualization` come from `PureQL.CSharp.Model.Graph.Neo4j.Insertion` and `PureQL.CSharp.Model.Graph.Neo4j.Deletion`; this package itself contains no operation.
+`InsertedQueryOf`, `InsertedQuery` and `DeletedQuery` come from `PureQL.CSharp.Model.Graph.Neo4j.Insertion` and `PureQL.CSharp.Model.Graph.Neo4j.Deletion`; this package itself contains no operation.
 
 ## Design Principles
 
