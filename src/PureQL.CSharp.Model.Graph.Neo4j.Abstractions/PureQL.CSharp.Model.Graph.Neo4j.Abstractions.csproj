@@ -11,6 +11,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</PackageId>
+    <Description>Abstractions for storing PureQL query graphs in Neo4j: the stored-queries contract and the stored query record shared by the Creation, Insertion, Querying, Deletion, Updating, Existence, Destruction and Migration packages.</Description>
     <RootNamespace>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</RootNamespace>
     <AssemblyName>PureQL.CSharp.Model.Graph.Neo4j.Abstractions</AssemblyName>
     <Authors>Dmitry Kurochkin</Authors>
