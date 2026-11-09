@@ -1,19 +1,18 @@
-# Pure.Template
+# PureQL.CSharp.Model.Graph.Neo4j.Abstractions
 
-Project template for new **Pure** ecosystem NuGet libraries.
+The Neo4j stored-queries contract shared by the **PureQL** graph storage packages.
 
+[![.NET build & test](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions/actions/workflows/build-and-test.yml)
+[![Build and Deploy](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions/actions/workflows/publish-nuget.yml/badge.svg?branch=main)](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions/actions/workflows/publish-nuget.yml)
+[![NuGet](https://img.shields.io/nuget/v/PureQL.CSharp.Model.Graph.Neo4j.Abstractions)](https://www.nuget.org/packages/PureQL.CSharp.Model.Graph.Neo4j.Abstractions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Overview
 
-`Pure.Template` is the canonical starting point for new Pure ecosystem packages. It ships with a pre-configured project structure, `.editorconfig`, GitHub Actions workflows for build/test and NuGet publish, and standard `CODEOWNERS` and `CODE_OF_CONDUCT.md` files — so a new library can be bootstrapped consistently without manually copying configuration from another repo.
+`PureQL.CSharp.Model.Graph.Neo4j.Abstractions` is the small package that the Neo4j operation packages of the `PureQL.CSharp.Model.Graph` family depend on, so that they share one description of the database they work on and of a stored query instead of depending on each other.
 
-## What's included
+## Installation
 
-| Item | Description |
-|------|-------------|
-| `.editorconfig` | Shared code style rules for the Pure ecosystem |
-| `CODEOWNERS` | Default ownership configuration |
-| `CODE_OF_CONDUCT.md` | Contributor code of conduct |
-| `.github/workflows/build-and-test.yml` | CI workflow: restore, build, and test on every push |
-| `.github/workflows/publish-nuget.yml` | Publish workflow: triggered on git tag push |
+```
+dotnet add package PureQL.CSharp.Model.Graph.Neo4j.Abstractions
+```
