@@ -21,7 +21,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Neo4j.Driver" Version="6.5.1" />
-    <PackageReference Include="PureQL.CSharp.Model" Version="0.1.0-preview.14.0.0" />
+    <PackageReference Include="PureQL.CSharp.Model" Version="0.1.0-preview.14.1.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="/" />

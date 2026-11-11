@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-All `dotnet` commands must be run from the `./src` directory. The SDK is pinned by `global.json` (.NET 11, for the model's C# 15 unions); where the system SDK is older, use `~/.dotnet/dotnet` or put it first on `PATH` with `DOTNET_ROOT=$HOME/.dotnet`.
+All `dotnet` commands must be run from the `./src` directory. The projects need the .NET 11 SDK (for the model's C# 15 unions); where the system SDK is older, use `~/.dotnet/dotnet` or put it first on `PATH` with `DOTNET_ROOT=$HOME/.dotnet`.
 
 ```bash
 dotnet restore
@@ -20,7 +20,7 @@ CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVe
 
 ## Architecture
 
-This is the **Neo4j abstractions package** of the `PureQL.CSharp.Model.Graph` family: the contract the Neo4j operation packages (Creation, Insertion, Querying, Deletion, Updating, Existence, Destruction, Migration) share, so that they depend on it rather than on each other. It depends on `PureQL.CSharp.Model` `0.1.0-preview.14.0.0` and `Neo4j.Driver` `6.5.1` (it follows the driver's latest stable major), and holds no I/O. Namespace `PureQL.CSharp.Model.Graph.Neo4j.Abstractions`, one public type per file:
+This is the **Neo4j abstractions package** of the `PureQL.CSharp.Model.Graph` family: the contract the Neo4j operation packages (Creation, Insertion, Querying, Deletion, Updating, Existence, Destruction, Migration) share, so that they depend on it rather than on each other. It depends on `PureQL.CSharp.Model` `0.1.0-preview.14.1.0` and `Neo4j.Driver` `6.5.1` (it follows the driver's latest stable major), and holds no I/O. Namespace `PureQL.CSharp.Model.Graph.Neo4j.Abstractions`, one public type per file:
 
 - `INeo4jStoredQueries` — `IDriver Driver` and `string Database`: the Neo4j database holding the query graphs.
 - `Neo4jStoredQueries` — `sealed record (IDriver Driver, string Database) : INeo4jStoredQueries`; the `(IDriver driver)` overload uses the constant `DefaultDatabase` (`"neo4j"`, the only user database on Community edition). It does not own the driver.
