@@ -67,7 +67,7 @@ await session.ExecuteWriteAsync(
 
 ## Dependencies
 
-- [`PureQL.CSharp.Model`](https://github.com/kudima03/PureQL.CSharp.Model) `0.1.0-preview.14.0.0` — `PureQLQuery`
+- [`PureQL.CSharp.Model`](https://github.com/kudima03/PureQL.CSharp.Model) `0.1.0-preview.14.1.0` — `PureQLQuery`
 - [`Neo4j.Driver`](https://www.nuget.org/packages/Neo4j.Driver) `6.5.1` — `IDriver`
 
 ## Target Frameworks
