@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-preview.1.1.0] - 2026-11-11
+
+Moves to the .NET 11 release of the model.
+
+### Changed
+
+- Depends on `PureQL.CSharp.Model` `0.1.0-preview.14.1.0` (was
+  `0.1.0-preview.14.0.0`).
+
 ## [0.1.0-preview.1.0.0] - 2026-11-09
 
 A stored query no longer knows the visualization it is shown in:
