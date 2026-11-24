@@ -22,6 +22,35 @@ public sealed record StoredQueryTests
         );
     }
 
+    private static PureQLQuery CombinedQuery()
+    {
+        return new MainCombinedQueryUnionAll(
+            unionAll:
+            [
+                new PlainQueryWithoutPaginationWithoutOrderBy(
+                    from: new FromEntity("shop.orders"),
+                    select:
+                    [
+                        new SelectItemProjection(
+                            "status",
+                            new FieldString("shop.orders", "status")
+                        ),
+                    ]
+                ),
+                new PlainQueryWithoutPaginationWithoutOrderBy(
+                    from: new FromEntity("shop.archived_orders"),
+                    select:
+                    [
+                        new SelectItemProjection(
+                            "status",
+                            new FieldString("shop.archived_orders", "status")
+                        ),
+                    ]
+                ),
+            ]
+        );
+    }
+
     [Fact]
     public void KeepsId()
     {
@@ -32,6 +61,13 @@ public sealed record StoredQueryTests
     public void KeepsQuery()
     {
         PureQLQuery query = Query();
+        Assert.Same(query.Value, new StoredQuery(Id, query).Query.Value);
+    }
+
+    [Fact]
+    public void KeepsCombinedQuery()
+    {
+        PureQLQuery query = CombinedQuery();
         Assert.Same(query.Value, new StoredQuery(Id, query).Query.Value);
     }
 
@@ -68,6 +104,15 @@ public sealed record StoredQueryTests
         Assert.NotEqual(
             new StoredQuery(Id, Query("status")),
             new StoredQuery(Id, Query("total"))
+        );
+    }
+
+    [Fact]
+    public void DiffersWithCombinedQuery()
+    {
+        Assert.NotEqual(
+            new StoredQuery(Id, Query("status")),
+            new StoredQuery(Id, CombinedQuery())
         );
     }
 

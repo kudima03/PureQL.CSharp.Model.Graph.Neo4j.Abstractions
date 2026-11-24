@@ -19,7 +19,7 @@ Namespace `PureQL.CSharp.Model.Graph.Neo4j.Abstractions`:
 |------|-------------|
 | `INeo4jStoredQueries` | A Neo4j database holding PureQL query graphs: the `IDriver Driver` connected to the server and the `string Database` name |
 | `Neo4jStoredQueries` | `sealed record Neo4jStoredQueries(IDriver Driver, string Database)`, the implementation; `new Neo4jStoredQueries(driver)` uses `Neo4jStoredQueries.DefaultDatabase`, `"neo4j"`, the only user database on Community edition |
-| `StoredQuery` | `sealed record StoredQuery(Guid Id, PureQLQuery Query)`: a query as stored, with its id |
+| `StoredQuery` | `sealed record StoredQuery(Guid Id, PureQLQuery Query)`: a query as stored, with its id; any `PureQLQuery`, combined (set-operation) queries included |
 
 `Neo4jStoredQueries` does not own its driver: whoever creates the `IDriver` disposes it.
 
@@ -67,7 +67,7 @@ await session.ExecuteWriteAsync(
 
 ## Dependencies
 
-- [`PureQL.CSharp.Model`](https://github.com/kudima03/PureQL.CSharp.Model) `0.1.0-preview.14.1.0` — `PureQLQuery`
+- [`PureQL.CSharp.Model`](https://github.com/kudima03/PureQL.CSharp.Model) `0.1.0-preview.15.0.0` — `PureQLQuery`
 - [`Neo4j.Driver`](https://www.nuget.org/packages/Neo4j.Driver) `6.5.1` — `IDriver`
 
 ## Target Frameworks
