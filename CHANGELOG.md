@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-preview.2.0.0] - 2026-11-24
+
+Moves to the model of PureQL specification `0.1.0-preview.3.0.0`. The public
+API of this package is unchanged, but `StoredQuery.Query` is the model's
+`PureQLQuery`, whose shape changed, so code that reads or builds the stored
+query must follow the model.
+
+### Changed
+
+- **Breaking:** depends on `PureQL.CSharp.Model` `0.1.0-preview.15.0.0` (was
+  `0.1.0-preview.14.1.0`), a breaking release of the model. A `PureQLQuery`
+  may now also be a combined query (`MainCombinedQueryUnionAll`,
+  `MainCombinedQueryUnion`, `MainCombinedQueryIntersect`,
+  `MainCombinedQueryExcept`), and the records it holds changed: `Subquery`,
+  `OrderItemProjection` and `OrderItemGroup` are unions, `Pagination` takes
+  `(skip?, take?)`, the add operators take `(operand, days|seconds)`,
+  rounding is split into `RoundWithDigits…` / `RoundWithoutDigits…`, and
+  plain-query aggregates take `Window? over`. See the model's changelog.
+
 ## [0.1.0-preview.1.1.0] - 2026-11-11
 
 Moves to the .NET 11 release of the model.
